@@ -1,0 +1,88 @@
+{
+    "empList" : [
+        {
+            "empId": 11111,
+            "empName": "John Doe",
+            "department": "IT Dev",
+            "experience": 24,
+            "isPermanent": true
+        },
+        {
+            "empId": 11112,
+            "empName": "Jane Doe",
+            "department": "IT Support",
+            "experience": 52,
+            "isPermanent": true
+        },
+        {
+            "empId": 11113,
+            "empName": "James Doe",
+            "department": "Dev Ops",
+            "experience": 45,
+            "isPermanent": true
+        },
+        {
+            "empId": 11114,
+            "empName": "John Dave",
+            "department": "HR",
+            "experience": 36,
+            "isPermanent": true
+        },
+		{
+            "empId": 28651,
+            "empName": "John Dave",
+            "department": "IT  Support",
+            "experience": 24,
+            "isPermanent": false
+        },
+        {
+            "empId": 56662,
+            "empName": "Jane Dale",
+            "department": "IT Support",
+            "experience": 52,
+            "isPermanent": true
+        },
+        {
+            "empId": 34883,
+            "empName": "James Devon",
+            "department": "HR",
+            "experience": 45,
+            "isPermanent": true
+        },
+        {
+            "empId": 58434,
+            "empName": "John Krenski",
+            "department": "IT Dev",
+            "experience": 36,
+            "isPermanent": false
+        },
+		{
+            "empId": 16671,
+            "empName": "Adam Phil",
+            "department": "IT Dev",
+            "experience": 24,
+            "isPermanent": true
+        },
+        {
+            "empId": 94562,
+            "empName": "Aaron Stone",
+            "department": "Dev Ops",
+            "experience": 52,
+            "isPermanent": true
+        },
+        {
+            "empId": 67233,
+            "empName": "Amber Keith",
+            "department": "HR",
+            "experience": 45,
+            "isPermanent": false
+        },
+        {
+            "empId": 25434,
+            "empName": "Ashley Simpson",
+            "department": "HR",
+            "experience": 36,
+            "isPermanent": true
+        }
+    ]
+}
