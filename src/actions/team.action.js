@@ -1,21 +1,7 @@
-import {fetchDataStart, fetchDataSuccess, fetchDataError} from './';
+import {fetchDetails} from './fetch.action';
+import {TEAM_LIST} from '../rest-url.const';
 export const getTeamDetails = () => {
     return dispatch => {
-        dispatch(fetchDataStart());
-        return fetch("https://portal-emp.firebaseio.com/team.json")
-          .then(handleErrors)
-          .then(res => res.json())
-          .then(json => {
-            dispatch(fetchDataSuccess(json));
-            return json.products;
-          })
-          .catch(error => dispatch(fetchDataError(error)));
+        dispatch(fetchDetails(TEAM_LIST));
       };
-}
-// Handle HTTP errors since fetch won't.
-function handleErrors(response) {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-  return response;
 }

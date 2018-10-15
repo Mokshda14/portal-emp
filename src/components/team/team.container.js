@@ -9,7 +9,7 @@ class Team extends Component {
     render(){
         return (
            <div>
-                <TeamCpt teamList={this.props.teamlist}></TeamCpt>
+                <TeamCpt teamList={this.props.teamlist} isLoading={this.props.isLoading}></TeamCpt>
            </div>
         )
     }
@@ -27,8 +27,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => ({
-    teamlist : state.fetchedData.payload
-})
+    teamlist : state.fetchedData.payload,
+    isLoading: state.fetchedData.loader
+    })
 
 
 

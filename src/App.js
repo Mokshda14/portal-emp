@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Switch, Route, Link} from 'react-router-dom';
-import  Home  from './components/home/home.component';
-import  Team  from './components/team/team.container';
-import  Attendance  from './components/attendance/attendance.component';
+import Portal from './components/portal/portal.container';
+import Login from './components/login/login.container';
+import LoginCpt from './components/login/login.component';
+import SignupCpt from './components/login/signup.component';
 import './App.css';
 class App extends Component {
 
@@ -13,20 +14,13 @@ render() {
         <h1 className="App-title">Emp Portal</h1>
       </header>
 
-      <header>
-        <nav>
-          <ul>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/team'>Team</Link></li>
-            <li><Link to='/attendance'>Attendance</Link></li>
-          </ul>
-        </nav>
-      </header>
       <Switch>
-        <Route exact path='/' component={Home}/>
-        <Route exact path='/team' component={Team}/>
-        <Route exact path='/attendance' component={Attendance}/>
+                    <Route exact path='/' component={LoginCpt}/>
+                    <Route exact path='/login' component={LoginCpt}/>
+                    <Route exact path='/signup' component={SignupCpt}/>
+                    <Route exact path='/portal' component={Portal}/>
       </Switch>
+      
     </div>
   );
 }
