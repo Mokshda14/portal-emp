@@ -22,8 +22,6 @@ export class Login extends Component {
         )
     }
 
-    componentDidMount() {
-    }
     
 }
 

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 
 class Home extends Component {
-    
+    debugger;
     render(){
         return (
             <h4>Welcome to Employee Portal</h4>
@@ -10,4 +10,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default Home;
