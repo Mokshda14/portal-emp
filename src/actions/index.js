@@ -32,4 +32,5 @@ export const postDataError = id => ({
   type: 'POST_ERROR',
   loader: false
 })
+
 /**   http post method end   **/

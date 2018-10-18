@@ -14,6 +14,8 @@ class Portal extends Component {
       <Router>
 
         <div className="portal">
+
+        <div className="link"><Link to='/login'>Log Out</Link> </div>
               <nav>
                 <ul>
                   <li><Link to={'/portal/home'}>Home</Link></li>

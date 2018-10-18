@@ -119,3 +119,9 @@ button {
   color: #333;
   margin-top: 10px;
 }
+.portal {
+  position: relative;
+}
+.portal .link {
+  top: 15px;
+}

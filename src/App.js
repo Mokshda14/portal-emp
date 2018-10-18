@@ -3,6 +3,7 @@ import { Route} from 'react-router-dom';
 import Portal from './components/portal/portal.container';
 import LoginCpt from './components/login/login.component';
 import SignupCpt from './components/login/signup.component';
+import LogoutCpt from './components/logout/logout.component';
 // import Home from './components/home/home.component';
 // import  Team  from './components/team/team.container';
 // import  Attendance  from './components/attendance/attendance.container';
@@ -24,6 +25,7 @@ render() {
       <Route path='/portal/team' component={Portal}/>
       <Route path='/portal/attendance' component={Portal}/>
       <Route exact path='/' component={SignupCpt}/>
+      <Route exact path='/logout' component={LogoutCpt}/>
     </div>
 
 
