@@ -5,7 +5,6 @@ const list = (props) => {
     if(props.isLoading) {
         elem.push(<tr><td colSpan="5" className="loader"/></tr>)
     } else {
-        console.log(props.attendanceList);
         if(props.attendanceList) {
             props.attendanceList.map((emp, index) => {
                 elem.push (

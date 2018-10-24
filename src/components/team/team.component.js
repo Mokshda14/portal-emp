@@ -1,6 +1,7 @@
 import React from 'react';
 
 const list = (props) => {
+    
     let elem = [];
     if(props.isLoading) {
         elem.push(<tr key="234"><td colSpan="5" className="loader"/></tr>)
@@ -8,10 +9,9 @@ const list = (props) => {
         if(props.teamList) {
             props.teamList.map((emp, index) => {
                 elem.push (
-                    // 
-                    
-                    <tr className="row" key={index}>
-                        <td className="col">{emp.empId}</td>
+                    <tr className={`row ${emp.isActive ? "active" : ""}`} key={index}
+                    onClick={() => props.rowSelected(index)}>
+                        <td className="col">{emp.empId}{emp.isActive}</td>
                         <td className="col">{emp.empName}</td>
                         <td className="col">{emp.department}</td>
                         <td className="col">{emp.experience}</td>
@@ -28,6 +28,7 @@ const list = (props) => {
 }
 
 const TeamCpt = (props)=>{
+    console.log(props.teamList);
     return(
         <div className="team-container">
             <h4>List Of your team</h4>

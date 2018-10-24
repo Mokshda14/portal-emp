@@ -125,3 +125,9 @@ button {
 .portal .link {
   top: 15px;
 }
+.team-container table .row .col {
+  background-color: #fff;
+}
+.team-container table .row.active .col {
+  background-color: #f1f0f0;
+}

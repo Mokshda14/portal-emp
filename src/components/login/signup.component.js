@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {createAcc} from '../../actions/login.action';
-import { connect } from 'react-redux'
+import {connect} from 'react-redux';
 class SignupCpt extends Component {
 
     constructor(props) {
@@ -14,7 +14,6 @@ class SignupCpt extends Component {
     
 
     setAcc(evt, field) {
-        debugger;
         switch(field) {
             case 'username': {
                 this.setState({...this.state, username: evt.target.value});
@@ -80,7 +79,6 @@ const mapDispatchToProps = (dispatch) => {
     
     return ({
     signup: (user, userName) => {
-        debugger;
         let userAcc = {};
         userAcc[userName] = user;
         if(userName) {

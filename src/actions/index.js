@@ -1,13 +1,15 @@
+
 /**   http get method   **/
 export const fetchDataStart = id => ({
   type: 'FETCH_START',
   loader: true 
 })
 
-export const fetchDataSuccess = response => ({
+export const fetchDataSuccess = (response, list) => ({
   type: 'FETCH_SUCCESS',
   payload: response,
-  loader: false
+  loader: false,
+  list
 })
 
 export const fetchDataError = id => ({
@@ -34,3 +36,26 @@ export const postDataError = id => ({
 })
 
 /**   http post method end   **/
+
+/**   session action begin  **/
+
+export const sessionValidation = flag => ({
+  type: 'SESSION_VALIDATED',
+  session_flag: flag
+})
+
+/**   session actions end  **/
+
+export const teamActiveMember = (id) => ({
+
+    type: 'ACTIVE_MEMBER',
+    id: id
+})
+
+export const setTeam = (team) => {
+  console.log("team.action");
+  return ({
+      type: 'TEAM',
+      team
+  })
+}

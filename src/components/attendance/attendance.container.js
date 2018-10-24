@@ -1,8 +1,7 @@
-import { connect } from 'react-redux'
 import { getAttendanceDetails} from '../../actions/attendance.action';
 import React, {Component} from 'react';
 import AttendanceCpt from './attendance.component'
-
+import {connect} from 'react-redux';
 class Attendance extends Component {
 
     
@@ -27,13 +26,11 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return ({
-    attendanceList : state.fetchedData.payload,
+    attendanceList : state.fetchedData.payload.attendance,
     isLoading: state.fetchedData.loader
     })
 }
-
 
 
 export default connect(

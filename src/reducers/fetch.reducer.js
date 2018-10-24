@@ -3,7 +3,9 @@ export const fetchedData = (state = {payload:[], loader: true}, action) => {
     case 'FETCH_START':
         return {...state, loader: action.loader};
     case 'FETCH_SUCCESS':
-        state  = {...state, payload: action.payload, loader: action.loader};
+    let data = {};
+    data[action.list] = action.payload;
+        state  = {...state, payload: data, loader: action.loader, list:action.list};
         return state;
     case 'FETCH_END':
         return {...state, loader: action.loader};

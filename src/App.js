@@ -4,28 +4,49 @@ import Portal from './components/portal/portal.container';
 import LoginCpt from './components/login/login.component';
 import SignupCpt from './components/login/signup.component';
 import LogoutCpt from './components/logout/logout.component';
-// import Home from './components/home/home.component';
-// import  Team  from './components/team/team.container';
-// import  Attendance  from './components/attendance/attendance.container';
+import {connect} from 'react-redux';
 import './App.css';
+
+const ValidRoute = (props) => {
+
+      if(props.isValidSession) {
+        return (<div>
+          <Route exact path='/login' component={LoginCpt}/>
+          <Route exact path='/signup' component={SignupCpt}/>
+          <Route exact path='/portal' component={Portal}></Route>
+          <Route path='/portal/home' component={Portal}/>
+          <Route path='/portal/team' component={Portal}/>
+          <Route path='/portal/attendance' component={Portal}/>
+          <Route exact path='/' component={LoginCpt}/>
+          <Route exact path='/logout' component={LogoutCpt}/>
+        </div> )
+      } else {
+        return (<div>
+          <Route exact path='/login' component={LoginCpt}/>
+          <Route exact path='/signup' component={SignupCpt}/>
+          <Route exact path='/logout' component={LogoutCpt}/>
+          <Route exact path='/*' component={LoginCpt}/>
+          </div>)
+      }
+
+
+}
+
 class App extends Component {
+
 
 render() {
   return (
+    
+
     <div className="App">
       <header className="App-header">
         <h1 className="App-title">Emp Portal</h1>
       </header>
 
+      <ValidRoute isValidSession={this.props.session.session_flag}/>
 
-      <Route exact path='/login' component={LoginCpt}/>
-      <Route exact path='/signup' component={SignupCpt}/>
-      <Route exact path='/portal' component={Portal}/>
-      <Route path='/portal/home' component={Portal}/>
-      <Route path='/portal/team' component={Portal}/>
-      <Route path='/portal/attendance' component={Portal}/>
-      <Route exact path='/' component={SignupCpt}/>
-      <Route exact path='/logout' component={LogoutCpt}/>
+      
     </div>
 
 
@@ -34,4 +55,12 @@ render() {
 }
 }
 
-export default App
+const mapStateToProps = (state) => ({
+  session: state.session
+})
+
+
+export default connect(
+  mapStateToProps, null
+)(App);
+

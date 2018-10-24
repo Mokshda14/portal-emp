@@ -1,21 +1,21 @@
-import {fetchDataStart, fetchDataSuccess, fetchDataError} from './';
-export const fetchDetails = (url) => {
+import {fetchDataStart, fetchDataSuccess, fetchDataError, setTeam} from './';
+import {invalidateSession} from './session.action'
+import {getData, getSession, setData} from '../helper/helper';
+
+export const fetchDetails = (url, type) => {
     return dispatch => {
-        dispatch(fetchDataStart());
-        return fetch(url)
-          .then(handleErrors)
-          .then(res => res.json())
-          .then(json => {
-            dispatch(fetchDataSuccess(json));
-            return json.products;
+      let validSession = getSession();
+        if(!validSession) {
+          dispatch(invalidateSession());
+        } else {
+          dispatch(fetchDataStart());
+          getData(url).then(res => {
+            dispatch(setTeam(res));
+            // setData(res);
+            dispatch(fetchDataSuccess(res, type));
+          }).catch(err => {
+            dispatch(fetchDataError());
           })
-          .catch(error => dispatch(fetchDataError(error)));
-      };
-}
-// Handle HTTP errors since fetch won't.
-function handleErrors(response) {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-  return response;
+        }
+      }
 }
