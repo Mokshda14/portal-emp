@@ -22,7 +22,6 @@ export const loginAcc = (user) => {
           dispatch(validateSession());
         }).catch(err => {
           alert(err);
-          console.log(err);
           dispatch(fetchDataError());
           dispatch(invalidateSession());
         })

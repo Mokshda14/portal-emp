@@ -5,3 +5,9 @@ export const getAttendanceDetails = () => {
         dispatch(fetchDetails(ATTENDANCE_LIST, 'attendance'));
       };   
 }
+export const setAttendance = (attendance) => {
+    return ({
+        type: 'ATTENDANCE',
+        attendance
+    })
+  }

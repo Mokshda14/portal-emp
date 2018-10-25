@@ -1,8 +1,10 @@
 import { getTeamDetails} from '../../actions/team.action';
-import { teamActiveMember } from '../../actions/index';
+import { activeMember } from '../../actions/index';
 import React, {Component} from 'react';
 import TeamCpt from './team.component';
 import {connect} from 'react-redux';
+
+import {Route, Link} from 'react-router-dom';
 class Team extends Component {
 
     constructor(props) {
@@ -13,11 +15,16 @@ class Team extends Component {
     render(){
         if(this.props.teamlist && this.props.teamlist.length) {
         return (
-           <div>
+           <div className={`${this.props.location.pathname.includes('team/id')?'with-member':''}`}>
                 <TeamCpt teamList={this.props.teamlist} isLoading={this.props.isLoading}
                     rowSelected={this.rowSelected}
                 ></TeamCpt>
+
+
+                 
            </div>
+
+           
         )
     } else {
         return(<div></div>);
@@ -41,7 +48,7 @@ const mapDispatchToProps = (dispatch) => {
     return(
         {
         getTeamDetails: () => dispatch(getTeamDetails()),
-        teamActiveMember: (id) => dispatch(teamActiveMember(id))
+        teamActiveMember: (id) => dispatch(activeMember(id, 'team'))
         }
     )
 }

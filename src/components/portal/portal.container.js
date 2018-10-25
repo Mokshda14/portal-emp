@@ -3,9 +3,11 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import  Home  from '../home/home.component';
 import  Team  from '../team/team.container';
 import  Attendance  from '../attendance/attendance.container';
+import Member from '../team/member/member.component';
 class Portal extends Component {
   constructor(props) {
     super(props)
+    console.log(props);
     this.logout = this.logout.bind(this);
   }
 
@@ -41,6 +43,7 @@ class Portal extends Component {
               <Route  path="/portal/home" component={Home} />  
               <Route  path='/portal/team' component={Team}/>
               <Route  path='/portal/attendance' component={Attendance}/>
+              <Route  path="/portal/team/id:id" component={Member} />
           </div>
           </Router>
       )

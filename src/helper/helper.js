@@ -1,5 +1,6 @@
 import {validateSession, invalidateSession } from '../actions/session.action';
-import {setTeam} from '../actions/';
+import {setTeam} from '../actions/team.action';
+import {setAttendance} from '../actions/attendance.action';
 export const gotToLogin = () => {
   window.location.replace('/login'); 
 }
@@ -25,7 +26,14 @@ export const getData = async(url, params) =>{
   return data;
 }
 
-export const setData = (data) => {
-  return dispatch => dispatch(setTeam(data));
+export const setData = (data, type) => {
+  switch(type){
+    case 'team':
+      return dispatch => dispatch(setTeam(data));
+    case 'attendance':
+      return dispatch => dispatch(setAttendance(data));
+    default:
+      return null;
+  }
 }
 

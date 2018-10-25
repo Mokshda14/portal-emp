@@ -6,3 +6,10 @@ export const getTeamDetails = () => {
       };
 }
 
+export const setTeam = (team) => {
+    return ({
+        type: 'TEAM',
+        team
+    })
+  }
+

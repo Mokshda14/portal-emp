@@ -64,7 +64,6 @@ nav ul li a {
   text-decoration: none;
 }
 .team-container {
-  position: absolute;
   text-align: center;
   margin: 0 auto;
   width: 100%;
@@ -130,4 +129,43 @@ button {
 }
 .team-container table .row.active .col {
   background-color: #f1f0f0;
+}
+.hidden {
+  display: none;
+}
+.message-container {
+  
+  position: relative;
+}
+
+.message-container .arrow {
+  position: absolute;
+  top: 14px;
+  left:-6px;
+  width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid #dbdd60
+}
+.message-container .info {
+  background-color: #f9f9d5;
+  padding: 10px;
+  border-radius: 25%;
+  border: 1px solid #dbdd60;
+}
+.message-container .info:before {
+  position: absolute;
+  top: 14px;
+  left:-4px;
+  content:'';
+  width: 0; 
+  height: 0; 
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent; 
+  border-right: 6px solid #f9f9d5;
+}
+.with-member {
+  height: 50vh;
+  overflow-y: scroll;
 }

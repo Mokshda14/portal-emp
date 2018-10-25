@@ -46,16 +46,20 @@ export const sessionValidation = flag => ({
 
 /**   session actions end  **/
 
-export const teamActiveMember = (id) => ({
-
-    type: 'ACTIVE_MEMBER',
-    id: id
-})
-
-export const setTeam = (team) => {
-  console.log("team.action");
-  return ({
-      type: 'TEAM',
-      team
-  })
+export const activeMember = (id, category) => {
+    switch(category) {
+      case 'team': 
+        return (
+          {type: 'TEAM_ACTIVE_MEMBER',
+          id: id}
+        );
+      case 'attendance': 
+      return (
+        {type: 'ATTENDANCE_ACTIVE_MEMBER',
+        id: id}
+      )
+      default:  
+        return null;
+    }
 }
+

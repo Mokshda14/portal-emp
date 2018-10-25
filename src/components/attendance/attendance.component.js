@@ -1,21 +1,34 @@
 import React from 'react';
 
+const getDetails = (isActive) => {
+    if(isActive) {
+        return <td>getDetails</td>
+    } else {
+        return null;
+    }
+}
+
 const list = (props) => {
     let elem = [];
     if(props.isLoading) {
-        elem.push(<tr><td colSpan="5" className="loader"/></tr>)
+        elem.push(<tr key={"123"}><td colSpan="5" className="loader"/></tr>)
     } else {
         if(props.attendanceList) {
             props.attendanceList.map((emp, index) => {
                 elem.push (
                     // 
                     
-                    <tr className="row" key={index}>
+                    <tr className={`row ${emp.isActive ? "active" : ""}`} key={index}
+                    onClick={() => props.rowSelected(index)}>
                         <td className="col">{emp.empId}</td>
                         <td className="col">{emp.empName}</td>
                         <td className="col">{emp.workingDays}</td>
                         <td className="col">{emp.casualLeaves}</td>
                         <td className="col">{emp.sickLeaves}</td>
+                        <td className={`${emp.isActive ? "" : "hidden"}`}>
+                            <div className="message-container"><div className="arrow"/><div className="info">View profile</div></div>
+                        </td>
+                        
                     </tr>
                 )
                 return true;

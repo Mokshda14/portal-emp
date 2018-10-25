@@ -1,5 +1,6 @@
 import React from 'react';
-
+import {Route, Link} from 'react-router-dom';
+import Member from './member/member.component';
 const list = (props) => {
     
     let elem = [];
@@ -16,6 +17,13 @@ const list = (props) => {
                         <td className="col">{emp.department}</td>
                         <td className="col">{emp.experience}</td>
                         <td className="col">{emp.isPermanent? 'Yes' : 'No'}</td>
+                        <td className={`${emp.isActive ? "" : "hidden"}`}>
+                            <div className="message-container"><div className="arrow"/>
+                                <div className="info">
+                                    <Link to={"/portal/team/id"+ emp.empId}>View profile</Link>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 )
                 return true;
@@ -28,7 +36,6 @@ const list = (props) => {
 }
 
 const TeamCpt = (props)=>{
-    console.log(props.teamList);
     return(
         <div className="team-container">
             <h4>List Of your team</h4>
@@ -45,6 +52,9 @@ const TeamCpt = (props)=>{
                     {list(props)}
                 </tbody>
             </table>
+
+             
+            
         </div>
     );
  }
