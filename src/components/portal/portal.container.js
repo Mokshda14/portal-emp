@@ -7,7 +7,6 @@ import Member from '../team/member/member.component';
 class Portal extends Component {
   constructor(props) {
     super(props)
-    console.log(props);
     this.logout = this.logout.bind(this);
   }
 
@@ -39,10 +38,10 @@ class Portal extends Component {
 
           
        
-
+                  <Route  path='/portal/attendance' component={Attendance}/>
               <Route  path="/portal/home" component={Home} />  
               <Route  path='/portal/team' component={Team}/>
-              <Route  path='/portal/attendance' component={Attendance}/>
+
               <Route  path="/portal/team/id:id" component={Member} />
           </div>
           </Router>

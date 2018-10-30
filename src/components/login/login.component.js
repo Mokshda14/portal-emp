@@ -30,6 +30,7 @@ class LoginCpt extends Component {
     
 
     render() {
+        console.log(this.props);
         if (!this.props.isSessionValid.session_flag) {
         return(
             <div className="login-container">
@@ -50,13 +51,20 @@ class LoginCpt extends Component {
                 <div className="link"><Link to='/signup'>Sign Up</Link></div>
                 <div className="button-container" onClick={e => this.props.login(this.state)}><button>Submit</button></div>
             </div>
-        ) } else 
+        ) } else if(this.props.location.pathname === '/login') {
             return (
                 <div>
                 PORTAL HOME
-                <Redirect to="/portal/home" push={false} />
+                <Redirect to='/portal/home' push={false} />
                 </div>
             )
+        } else {
+            return(
+            <div>
+                <Redirect to={this.props.location.pathname} push={false} />
+                </div>
+            )
+        }
     }
     
 }

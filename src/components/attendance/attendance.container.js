@@ -26,6 +26,7 @@ class Attendance extends Component {
     }
 
     componentDidMount() {
+        if(this.props.attendanceList && this.props.attendanceList.length===0)
       this.props.getAttendanceDetails();
     }
     

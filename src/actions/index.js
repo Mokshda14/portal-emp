@@ -1,4 +1,4 @@
-
+import {setActiveMember}from './common.action'; 
 /**   http get method   **/
 export const fetchDataStart = id => ({
   type: 'FETCH_START',
@@ -49,14 +49,18 @@ export const sessionValidation = flag => ({
 export const activeMember = (id, category) => {
     switch(category) {
       case 'team': 
-        return (
-          {type: 'TEAM_ACTIVE_MEMBER',
-          id: id}
+
+        return dispatch => (
+          dispatch(setActiveMember(id),
+          dispatch({type: 'TEAM_ACTIVE_MEMBER',
+          id: id}))
         );
       case 'attendance': 
-      return (
-        {type: 'ATTENDANCE_ACTIVE_MEMBER',
-        id: id}
+
+      return dispatch => (
+        dispatch(setActiveMember(id),
+        dispatch({type: 'ATTENDANCE_ACTIVE_MEMBER',
+        id: id}))
       )
       default:  
         return null;

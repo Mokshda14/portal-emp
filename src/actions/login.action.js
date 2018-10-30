@@ -4,7 +4,7 @@ import {CREATE_ACC} from '../rest-url.const';
 import {LOGIN_ACC} from '../rest-url.const';
 import {fetchDataStart, fetchDataSuccess, fetchDataError} from './';
 import { validateSession, invalidateSession } from './session.action';
-import {getData, createSession} from '../helper/helper';
+import {getData, createSession, getSession} from '../helper/helper';
 
 
 export const createAcc = (user) => {
@@ -26,4 +26,15 @@ export const loginAcc = (user) => {
           dispatch(invalidateSession());
         })
       };   
+}
+
+export const checkSession = () => {
+  return dispatch => {
+    let session = getSession();
+    if(session) {
+      dispatch(validateSession())
+    } else {
+      dispatch(invalidateSession())
+    }
+  }
 }

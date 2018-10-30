@@ -1,23 +1,47 @@
-import React from 'react';
-import {Route, Link} from 'react-router-dom';
-import Member from './member/member.component';
-const list = (props) => {
-    
+import React, { Component } from 'react';
+import { Link} from 'react-router-dom';
+import ReactDOM from 'react-dom';
+class List extends Component {
+    componentDidMount() {
+        let activeId = this.props.atr.activeId
+        let selectedIndex = this.props.atr.teamList.findIndex(function(element) {
+            return element.empId === activeId;
+          });
+          if(selectedIndex !== -1 && this.arr[selectedIndex]) {
+          ReactDOM.findDOMNode(this.arr[selectedIndex]).scrollIntoView();
+          }
+    }
+
+
+    componentDidUpdate() {
+        let activeId = this.props.atr.activeId
+        let selectedIndex = this.props.atr.teamList.findIndex(function(element) {
+            return element.empId === activeId;
+          });
+          if(selectedIndex !== -1 && this.arr[selectedIndex]) {
+          ReactDOM.findDOMNode(this.arr[selectedIndex]).scrollIntoView();
+          }
+    }
+
+
+    render() {
     let elem = [];
-    if(props.isLoading) {
+    this.arr = new Array(this.props.atr.teamList.length);
+    if(this.props.atr.isLoading) {
         elem.push(<tr key="234"><td colSpan="5" className="loader"/></tr>)
     } else {
-        if(props.teamList) {
-            props.teamList.map((emp, index) => {
+        if(this.props.atr.teamList) {
+            this.props.atr.teamList.map((emp, index) => {
                 elem.push (
-                    <tr className={`row ${emp.isActive ? "active" : ""}`} key={index}
-                    onClick={() => props.rowSelected(index)}>
+                    <tr id={emp.empId} className={`row ${emp.empId === this.props.atr.activeId ? "active" : ""}`} 
+                        key={index} ref={(elem)=> {this.arr[index] = elem; console.log(this.arr)}}
+                        onClick={() => this.props.atr.rowSelected(index)}> 
                         <td className="col">{emp.empId}{emp.isActive}</td>
                         <td className="col">{emp.empName}</td>
                         <td className="col">{emp.department}</td>
                         <td className="col">{emp.experience}</td>
                         <td className="col">{emp.isPermanent? 'Yes' : 'No'}</td>
-                        <td className={`${emp.isActive ? "" : "hidden"}`}>
+                        <td className={`${emp.empId === this.props.atr.activeId  ? "" : "hidden"}`}>
                             <div className="message-container"><div className="arrow"/>
                                 <div className="info">
                                     <Link to={"/portal/team/id"+ emp.empId}>View profile</Link>
@@ -31,12 +55,54 @@ const list = (props) => {
         } else {
             elem.push( <tr key="123"><td colSpan="5" className="">No Data Found</td></tr>)
         }
+        
     }
+    console.log(this.arr);
     return elem;
+        
+    }
 }
 
-const TeamCpt = (props)=>{
-    return(
+// const list = (props) => {
+    
+//     let elem = [];
+//     if(props.isLoading) {
+//         elem.push(<tr key="234"><td colSpan="5" className="loader"/></tr>)
+//     } else {
+//         if(props.teamList) {
+//             props.teamList.map((emp, index) => {
+//                 elem.push (
+//                     <tr className={`row ${emp.empId === props.activeId ? "active" : ""}`} key={index}
+//                     onClick={() => props.rowSelected(index)}>
+//                         <td className="col">{emp.empId}{emp.isActive}</td>
+//                         <td className="col">{emp.empName}</td>
+//                         <td className="col">{emp.department}</td>
+//                         <td className="col">{emp.experience}</td>
+//                         <td className="col">{emp.isPermanent? 'Yes' : 'No'}</td>
+//                         <td className={`${emp.empId === props.activeId  ? "" : "hidden"}`}>
+//                             <div className="message-container"><div className="arrow"/>
+//                                 <div className="info">
+//                                     <Link to={"/portal/team/id"+ emp.empId}>View profile</Link>
+//                                 </div>
+//                             </div>
+//                         </td>
+//                     </tr>
+//                 )
+//                 return true;
+//             })
+//         } else {
+//             elem.push( <tr key="123"><td colSpan="5" className="">No Data Found</td></tr>)
+//         }
+//     }
+//     return elem;
+// }
+
+// const TeamCpt = (props)=>{
+    class TeamCpt extends Component {
+
+
+    render() {
+        return(
         <div className="team-container">
             <h4>List Of your team</h4>
             <table>
@@ -49,7 +115,8 @@ const TeamCpt = (props)=>{
                     <td className="col header">Is permanent?</td>
                     
                 </tr>
-                    {list(props)}
+                    {/* {list(props)} */}
+                    <List atr={this.props} />
                 </tbody>
             </table>
 
@@ -57,5 +124,6 @@ const TeamCpt = (props)=>{
             
         </div>
     );
+}
  }
 export default TeamCpt;

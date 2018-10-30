@@ -1,12 +1,6 @@
 import React from 'react';
+import { Link} from 'react-router-dom';
 
-const getDetails = (isActive) => {
-    if(isActive) {
-        return <td>getDetails</td>
-    } else {
-        return null;
-    }
-}
 
 const list = (props) => {
     let elem = [];
@@ -26,7 +20,12 @@ const list = (props) => {
                         <td className="col">{emp.casualLeaves}</td>
                         <td className="col">{emp.sickLeaves}</td>
                         <td className={`${emp.isActive ? "" : "hidden"}`}>
-                            <div className="message-container"><div className="arrow"/><div className="info">View profile</div></div>
+                            <div className="message-container"><div className="arrow"/>
+                            
+                                <div className="info">
+                                <Link to={"/portal/team/id"+ emp.empId}>View profile</Link>
+                                </div>
+                            </div>
                         </td>
                         
                     </tr>

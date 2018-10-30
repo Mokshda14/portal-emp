@@ -6,7 +6,7 @@ export const gotToLogin = () => {
 }
 
 export const createSession = (data) => {
-  localStorage.setItem('session', data);
+  localStorage.setItem('session', data.token);
   return dispatch => dispatch(validateSession());
 }
 
