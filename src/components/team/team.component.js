@@ -63,41 +63,6 @@ class List extends Component {
     }
 }
 
-// const list = (props) => {
-    
-//     let elem = [];
-//     if(props.isLoading) {
-//         elem.push(<tr key="234"><td colSpan="5" className="loader"/></tr>)
-//     } else {
-//         if(props.teamList) {
-//             props.teamList.map((emp, index) => {
-//                 elem.push (
-//                     <tr className={`row ${emp.empId === props.activeId ? "active" : ""}`} key={index}
-//                     onClick={() => props.rowSelected(index)}>
-//                         <td className="col">{emp.empId}{emp.isActive}</td>
-//                         <td className="col">{emp.empName}</td>
-//                         <td className="col">{emp.department}</td>
-//                         <td className="col">{emp.experience}</td>
-//                         <td className="col">{emp.isPermanent? 'Yes' : 'No'}</td>
-//                         <td className={`${emp.empId === props.activeId  ? "" : "hidden"}`}>
-//                             <div className="message-container"><div className="arrow"/>
-//                                 <div className="info">
-//                                     <Link to={"/portal/team/id"+ emp.empId}>View profile</Link>
-//                                 </div>
-//                             </div>
-//                         </td>
-//                     </tr>
-//                 )
-//                 return true;
-//             })
-//         } else {
-//             elem.push( <tr key="123"><td colSpan="5" className="">No Data Found</td></tr>)
-//         }
-//     }
-//     return elem;
-// }
-
-// const TeamCpt = (props)=>{
     class TeamCpt extends Component {
 
 

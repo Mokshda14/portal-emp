@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import { activeMember } from '../../../actions/index';
+ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 class Member extends Component {
 
     // constructor(props) {
@@ -15,15 +16,31 @@ class Member extends Component {
     }
 
     render() {
-        
+        if(this.props.team && this.props.team.length>0) {
         return(
+            
+            <ReactCSSTransitionGroup transitionName="example" transitionAppear={true}
+      transitionAppearTimeout={500}
+>
             <div className="member-container">
             <div className="cross">
                 <Link to={"/portal/team"}>&times;</Link>
             </div>
+
+            <ReactCSSTransitionGroup transitionName="content-anim" transitionAppear={true}
+      transitionAppearTimeout={500}
+      transitionEnter={true}
+      transitionLeave={true}
+      transitionEnterTimeout={2000}
+      transitionLeaveTimeout={2000}>
             <h4>Member id: {this.props.match.params.id}</h4>
+
+            </ReactCSSTransitionGroup>
             </div>
-        )
+            </ReactCSSTransitionGroup>
+        )} else {
+            return <div />
+        }
     }
 
 }
