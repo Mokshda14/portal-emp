@@ -33,17 +33,18 @@ class List extends Component {
         if(this.props.atr.teamList) {
             this.props.atr.teamList.map((emp, index) => {
                 elem.push (
-                    <tr id={emp.empId} className={`row ${emp.empId === this.props.atr.activeId ? "active" : ""}`} 
-                        key={index} ref={(elem)=> {this.arr[index] = elem; console.log(this.arr)}}
-                        onClick={() => this.props.atr.rowSelected(index)}> 
+                    <tr id={emp.empId} className={`row ${emp.isActive ? "active" : ""}`} 
+                        key={index} ref={(elem)=> {this.arr[index] = elem}}
+                        onClick={() => this.props.atr.rowSelected(index, false)}> 
                         <td className="col">{emp.empId}{emp.isActive}</td>
                         <td className="col">{emp.empName}</td>
                         <td className="col">{emp.department}</td>
                         <td className="col">{emp.experience}</td>
                         <td className="col">{emp.isPermanent? 'Yes' : 'No'}</td>
-                        <td className={`${emp.empId === this.props.atr.activeId  ? "" : "hidden"}`}>
+                        <td className={`${emp.isActive  ? "" : "hidden"}`}>
                             <div className="message-container"><div className="arrow"/>
-                                <div className="info">
+                                <div className="info" onClick={() => this.props.atr.rowSelected(index, true)}>
+                                {/* View profile */}
                                     <Link to={"/portal/team/id"+ emp.empId}>View profile</Link>
                                 </div>
                             </div>
@@ -57,7 +58,6 @@ class List extends Component {
         }
         
     }
-    console.log(this.arr);
     return elem;
         
     }

@@ -32,10 +32,9 @@ class Team extends Component {
     }
     }
 
-    rowSelected(indexSelected) {
+    rowSelected(indexSelected, flag) {
         if(this.props.teamlist[indexSelected]) {
-            this.props.teamActiveMember(this.props.teamlist[indexSelected].empId);
-            console.log(this.selectedRow)
+            this.props.teamActiveMember(this.props.teamlist[indexSelected].empId, flag);
         }
         // ReactDOM.findDOMNode(this.refs[this.props.teamlist[indexSelected].empId]).focus();
         // document.getElementById(this.props.teamlist[indexSelected].empId).focus({preventScroll:false});
@@ -57,7 +56,7 @@ const mapDispatchToProps = (dispatch) => {
     return(
         {
         getTeamDetails: () => dispatch(getTeamDetails()),
-        teamActiveMember: (id) => dispatch(activeMember(id, 'team'))
+        teamActiveMember: (id, flag) => dispatch(activeMember(id, 'team', flag))
         }
     )
 }

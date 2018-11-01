@@ -46,15 +46,21 @@ export const sessionValidation = flag => ({
 
 /**   session actions end  **/
 
-export const activeMember = (id, category) => {
+export const activeMember = (id, category, flag) => {
     switch(category) {
       case 'team': 
-
+      if(flag) {
         return dispatch => (
           dispatch(setActiveMember(id),
           dispatch({type: 'TEAM_ACTIVE_MEMBER',
           id: id}))
         );
+      } else {
+        return dispatch => (
+          dispatch({type: 'TEAM_ACTIVE_MEMBER',
+          id: id})
+        );
+      }
       case 'attendance': 
 
       return dispatch => (
